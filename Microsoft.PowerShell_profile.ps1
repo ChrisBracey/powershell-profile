@@ -180,7 +180,7 @@ Set-Alias -Name vim -Value $EDITOR
 
 # Quick Access to Editing the Profile
 function Edit-Profile {
-    vim $PROFILE.CurrentUserAllHosts
+    code $PROFILE.CurrentUserAllHosts
 }
 Set-Alias -Name ep -Value Edit-Profile
 
