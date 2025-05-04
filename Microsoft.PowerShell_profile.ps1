@@ -106,7 +106,8 @@ function Update-PowerShell {
 if (-not $debug -and `
     ($updateInterval -eq -1 -or `
      -not (Test-Path $timeFilePath) -or `
-     ((Get-Date).Date - [datetime]::ParseExact((Get-Content -Path $timeFilePath), 'yyyy-MM-dd', $null).Date).TotalDays -gt $updateInterval)) {
+     ((Get-Date).Date - [datetime]::ParseExact((Get-Content -Path $timeFilePath), 'yyyy-MM-dd', $null).Date).TotalDays -gt $updateInterval) -and `
+     $global:canConnectToGitHub) {
     Update-Profile
     Update-PowerShell
     $currentTime = Get-Date -Format 'yyyy-MM-dd'
