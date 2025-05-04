@@ -400,8 +400,7 @@ function ga { git add . }
 
 function gc { param($m) git commit -m "$m" }
 
-function gchk { 
-    param($branch)
+function gchk($branch) {
     $branchExist = git branch --list $branch
     if ($branchExist) {
         git checkout "$branch"
