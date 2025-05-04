@@ -79,7 +79,6 @@ function Update-Profile {
 
 function Update-PowerShell {
     try {
-        Write-Host "Checking for PowerShell updates..." -ForegroundColor Cyan
         $updateNeeded = $false
         $currentVersion = $PSVersionTable.PSVersion.ToString()
         $gitHubApiUrl = "https://api.github.com/repos/PowerShell/PowerShell/releases/latest"
@@ -108,6 +107,7 @@ if (-not $debug -and `
      -not (Test-Path $timeFilePath) -or `
      ((Get-Date).Date - [datetime]::ParseExact((Get-Content -Path $timeFilePath), 'yyyy-MM-dd', $null).Date).TotalDays -gt $updateInterval) -and `
      $global:canConnectToGitHub) {
+    Write-Host "Checking for PowerShell and Profile updates..." -ForegroundColor Cyan
     Update-Profile
     Update-PowerShell
     $currentTime = Get-Date -Format 'yyyy-MM-dd'
