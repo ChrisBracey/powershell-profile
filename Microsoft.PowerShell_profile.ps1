@@ -376,7 +376,8 @@ function docs {
 }
 
 function proj {
-    $proj = if(([Environment]::GetFolderPath("MyDocuments"))) {([Environment]::GetFolderPath("MyDocuments"))} else {$HOME + "\Documents\Projects"}
+    $proj = if(([Environment]::GetFolderPath("MyDocuments"))) {([Environment]::GetFolderPath("MyDocuments"))} else {$HOME + "\Documents"}
+    $proj += "\Projects"
     Set-Location -Path $proj
 }
     
