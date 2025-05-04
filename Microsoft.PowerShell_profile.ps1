@@ -374,6 +374,11 @@ function docs {
     $docs = if(([Environment]::GetFolderPath("MyDocuments"))) {([Environment]::GetFolderPath("MyDocuments"))} else {$HOME + "\Documents"}
     Set-Location -Path $docs
 }
+
+function proj {
+    $proj = if(([Environment]::GetFolderPath("MyDocuments"))) {([Environment]::GetFolderPath("MyDocuments"))} else {$HOME + "\Documents\Projects"}
+    Set-Location -Path $proj
+}
     
 function dtop { 
     $dtop = if ([Environment]::GetFolderPath("Desktop")) {[Environment]::GetFolderPath("Desktop")} else {$HOME + "\Documents"}
@@ -585,6 +590,8 @@ $($PSStyle.Foreground.Green)nf$($PSStyle.Reset) <name> - Creates a new file with
 $($PSStyle.Foreground.Green)mkcd$($PSStyle.Reset) <dir> - Creates and changes to a new directory.
 
 $($PSStyle.Foreground.Green)docs$($PSStyle.Reset) - Changes the current directory to the user's Documents folder.
+
+$($PSStyle.Foreground.Green)proj$($PSStyle.Reset) - Changes the current directory to the user's Documents\Projects folder.
 
 $($PSStyle.Foreground.Green)dtop$($PSStyle.Reset) - Changes the current directory to the user's Desktop folder.
 
