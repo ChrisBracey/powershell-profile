@@ -400,6 +400,16 @@ function ga { git add . }
 
 function gc { param($m) git commit -m "$m" }
 
+function gchk { 
+    param($branch)
+    $branchExist = git branch --list $branch
+    if ($branchExist) {
+        git checkout "$branch"
+    } else {
+        git checkout -b "$branch"
+    }
+}
+
 function gp { git push }
 
 function g { __zoxide_z github }
@@ -464,8 +474,7 @@ Set-PSReadLineKeyHandler -Chord 'Alt+d' -Function DeleteWord
 Set-PSReadLineKeyHandler -Chord 'Ctrl+LeftArrow' -Function BackwardWord
 Set-PSReadLineKeyHandler -Chord 'Ctrl+RightArrow' -Function ForwardWord
 Set-PSReadLineKeyHandler -Chord 'Ctrl+z' -Function Undo
-Set-PSReadLineKeyHandler -Chord 'Ctrl+y' -Function Redo
-
+Set-PSReadLineKeyHandler -Chord 'Ctrl+y' -Function Redo\
 # Custom functions for PSReadLine
 Set-PSReadLineOption -AddToHistoryHandler {
     param($line)
